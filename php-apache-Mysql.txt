@@ -1,0 +1,11 @@
+docker pull mysql:5.7
+
+docker pull php:7.0-apache
+
+docker run -p 3306:3306 --name basedatos -v //D/Descargas/Docker/servicioWeb/database://var/lib/mysql -e MYSQL_ROOT_PASSWORD=martin -d mysql:5.7
+
+docker run -p 9090:80 -v //D/Descargas/Docker/servicioWeb:/var/www/html --name miservidorphp -d --link basedatos php:7.0-apache
+
+docker run -p 3306:3306 --name basedatos -v //D/Descargas/Docker/servicioWeb/database://var/lib/mysql -e MYSQL_ROOT_PASSWORD=martin -d mysql:5.7
+
+

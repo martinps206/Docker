@@ -1,0 +1,18 @@
+pip install virtualenv
+
+ --> (https://stackoverflow.com/questions/31133050/virtualenv-command-not-found)
+python3 -m virtualenv virtualenv_name  
+
+cd /virtualenv/scripts activate.bat
+
+pip install flask
+
+cd .. / ..
+
+python src/app.py
+
+ --> (https://hub.docker.com/_/alpine)
+
+docker build -t flaskapp .
+
+docker run -it flaskapp /bin/sh    <-- () en powershell

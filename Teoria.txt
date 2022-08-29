@@ -1,0 +1,93 @@
+Virtualizacion
+Permite atacar en simultáneo los tres problemas del desarrollo de software profesional.
+
+Problemas de la virtualizacion
+PESO: En el orden de los GBs. Repiten archivos en común. Inicio lento.
+COSTO DE ADMINISTRACION: Necesita mantenimiento igual que cualquier otra computadora.
+MULTIPLES DE FORMATO: VDI, VMDK, VHD, raw, etc
+
+Containerización
+El empleo de contenedores para construir y desplegar software.
+Flexibles
+Livianos
+Portables
+Bajo acoplamiento
+Escalables
+Seguros
+
+Virtualizacion vs Containerización
+Virtualización: A diferencia de un contenedor, las máquinas virtuales ejecutan 
+un sistema operativo completo, incluido su propio kernel.
+Containerización: Un contenedor es un silo aislado y ligero para ejecutar una 
+aplicación en el sistema operativo host. Los contenedores se basan en el kernel 
+del sistema operativo host (que puede considerarse la fontanería del sistema operativo), 
+y solo puede contener aplicaciones y algunas API ligeras del sistema operativo y 
+servicios que se ejecutan en modo de usuario.
+
+
+Componentes DENTRO del circulo de Docker:
+
+Docker daemon: Es el centro de docker, el corazón que gracias a el, podemos comunicarnos con los servicios de docker.
+REST API: Como cualquier otra API, es la que nos permite visualizar docker de forma “gráfica”.
+Cliente de docker: Gracias a este componente, podemos comunicarnos con el corazón de docker (Docker Daemon) que por defecto es la línea de comandos.
+Dentro de la arquitectura de Docker encontramos:
+
+Contenedores: Es la razón de ser de Docker, es donde podemos encapsular nuestras imagenes para llevarlas a otra computadora, o servidor, etc.
+Imagenes: Son las encapsulaciones de x contenedor. Podemos correr nuestra aplicación en Java por medio de una imagen, podemos utilizar Ubuntu para correr nuestro proyecto, etc.
+Volumenes de datos: Podemos acceder con seguridad al sistema de archivos de nuestra máquina.
+Redes: Son las que permiten la comunicación entre contenedores.
+
+Docker Architecture
+
+docker daemon
+Rest API
+Client (docker cli)
+Docker components
+
+Container
+image
+data volumes (secure file explorer)
+network
+
+Arquitectura de Docker
+Docker Daemon: Es aquel que va a interactuar con el SO para permitirnos utilizar los contenedores y todo lo que esto respecta
+Rest API: Es la forma en que Docker se comunica consigo. Asi, podemos comunicarnos con nuestra propia máquina con Daemon por HTTP, o desde una máquina remota del mismo modo gracias a la API que expone
+Docker CLI: El cliente o Command Line Interface se comunica con el Docker Daemon con las instrucciones que le mandamos a través del CLI
+Hay 4 entidades importantes de Docker
+Containers: Es el corazón de docker, lo más importante y lo que se va a utilizar todo el tiempo. Sin los contenedores Docker no tiene sentido
+Image: Son los artefactos que utiliza Docker para empaquetar contenedores y para poder distribuirlo a través de distintas instalaciones de Docker
+Data Volumes: Es la forma en que Docker nos permite acceder, con seguridad y de manera flexible, al sistema de archivos de la máquina anfitriona sin comprometer la seguridad del mismo.
+Network: Permite a los distintos contenedores de Docker comunicarse entre sí o con el mundo exterior.
+
+Que es un contenedor ?
+
+Es una agrupación de procesos.
+
+Es una entidad lógica, no tiene el limite estricto de las máquinas virtuales, emulación del sistema operativo simulado por otra más abajo.
+
+Ejecuta sus procesos de forma nativa.
+
+Los procesos que se ejecutan adentro de los contenedores ven su universo como el contenedor lo define, no pueden ver mas allá del contenedor, a pesar de estar corriendo en una maquina más grande.
+
+No tienen forma de consumir más recursos que los que se les permite. Si esta restringido en memoria ram por ejemplo, es la única que pueden usar.
+
+A fines prácticos los podemos imaginar cómo maquinas virtuales, pero NO lo son. Máquinas virtuales livianas.
+
+Docker corre de forma nativa solo en Linux.
+
+Sector del disco: Cuando un contenedor es ejecutado, el daemon de docker le dice, a partir de acá para arriba este disco es tuyo, pero no puedes subir mas arriba.
+
+Docker hace que los procesos adentro de un contenedor este aislados del resto del sistema, no le permite ver más allá.
+
+Cada contenedor tiene un ID único, también tiene un nombre.
+
+Comandos:
+$ docker run hello-world (corro el contenedor hello-world)
+$ docker ps (muestra los contenedores activos)
+$ docker ps -a (muestra todos los contenedores)
+$ docker inspect <containe ID> (muestra el detalle completo de un contenedor)
+$ docker inspect <name> (igual que el anterior pero invocado con el nombre)
+$ docker run –-name hello-platzi hello-world (le asigno un nombre custom “hello-platzi”)
+$ docker rename hello-platzi hola-platzy (cambio el nombre de hello-platzi a hola-platzi)
+$ docker rm <ID o nombre> (borro un contenedor)
+$ docker container prune (borro todos lo contenedores que esten parados)
